@@ -33,8 +33,8 @@ class PlayState extends BaseState
 			ammo:10,
 			maxAmmo:10,
 			cooldown:200,
-			payload:'normal',
-			launch:'handgun',
+			payload:'slug',
+			launch:'spread',
 			flight:'normal'
 		};
 		changePlayerWeapon(weapon);
@@ -52,8 +52,8 @@ class PlayState extends BaseState
 			ammo:3,
 			maxAmmo:10,
 			cooldown:200,
-			payload:'normal',
-			launch:'fourway',
+			payload:'dynamite',
+			launch:'mine',
 			flight:'normal'
 		};
 		changePlayerWeapon(four);
