@@ -20,11 +20,18 @@ class SubBullet extends Entity
 	public function new(xp:Float, yp:Float, graphic:Dynamic, vector:FlxPoint, type:WeaponType) 
 	{
 		super(xp, yp, graphic);
-		this.type = type;
-		init(vector);
+		init(xp, yp, graphic, vector, type);
 	}
-	function init(vector:FlxPoint) {
+	public function init(xp:Float, yp:Float, graphic:Dynamic, vector:FlxPoint, type:WeaponType) {
+		this.alive = true;
+		this.exists = true;
+		x = xp;
+		y = yp;
+		_counter = 0;
+		_sine = 0;
+		loadGraphic(graphic);
 		velocity = vector;
+		this.type = type;
 	}
 	
 	override public function update() {
