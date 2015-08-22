@@ -1,4 +1,4 @@
-package collectable.weapon;
+package entity.weapon;
 
 /**
  * @author Oliver Ross

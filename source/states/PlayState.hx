@@ -1,5 +1,5 @@
 package states;
-import collectable.weapon.WeaponType;
+import entity.weapon.WeaponType;
 import del.Delegates;
 import entity.level.Level;
 import entity.Player;
@@ -32,10 +32,10 @@ class PlayState extends BaseState
 		var weapon:WeaponType = {
 			ammo:10,
 			maxAmmo:10,
-			cooldown:200,
+			cooldown:30,
 			payload:'slug',
-			launch:'spread',
-			flight:'normal'
+			launch:'fourway',
+			flight:'tracking'
 		};
 		changePlayerWeapon(weapon);
 	}
@@ -45,16 +45,16 @@ class PlayState extends BaseState
 		chaseHandling();
 	}
 	function collisionHandling() {
-		FlxG.collide(_player.core, _level.bounds, doTest);
+		FlxG.collide(_player.core, _level.bounds, doTest);		// TODO remember to remove meeeeeeeeeeeeeee
 	}
 	function doTest(a:FlxSprite, b:FlxSprite) {
 		var four:WeaponType = {
 			ammo:3,
 			maxAmmo:10,
 			cooldown:200,
-			payload:'dynamite',
+			payload:'chloroform',
 			launch:'mine',
-			flight:'normal'
+			flight:'tracking'
 		};
 		changePlayerWeapon(four);
 	}

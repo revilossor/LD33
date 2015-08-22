@@ -1,5 +1,4 @@
-package collectable.weapon;
-import collectable.Collectable;
+package entity.weapon;
 
 /**
  * ...

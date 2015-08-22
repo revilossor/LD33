@@ -1,6 +1,6 @@
 package del;
-import collectable.weapon.Weapon;
-import collectable.weapon.WeaponType;
+import entity.weapon.Weapon;
+import entity.weapon.WeaponType;
 import flixel.group.FlxGroup;
 
 /**
@@ -20,13 +20,14 @@ class ShootDelegate extends FlxGroup
 		return _counter == 0 && _weapon != null && Registry.ammo > 0;
 	}
 	
-	public function setWeapon(to:WeaponType) { _weapon = Type.createInstance(Weapon, [to]); }
+	public function setWeapon(to:WeaponType) { _weapon = new Weapon(to); }
 	
-	public function fire() {
+	public function getBullet() {
 		_counter = _weapon.type.cooldown;
 		Registry.ammo--;
 		if (Registry.ammo < 0) { Registry.ammo = 0; }
 		trace('shoot ' + _weapon.type.launch + ' ' + _weapon.type.flight + ' ' + _weapon.type.payload );
+		return _weapon.type;
 	}
 	
 }

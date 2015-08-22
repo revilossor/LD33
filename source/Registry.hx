@@ -9,7 +9,7 @@ class Registry
 {
 	public static var SCROLL_DELTA:Int = 0;
 	public static var SCROLL_COEFFICIENT:Float = 0.01;
-	public static var CHASE_SPEED:Int = 1;
+	public static var CHASE_SPEED:Int = 2;
 		
 	public static var reward:Int = 0;
 	public static var health:Int = 3;

@@ -1,5 +1,5 @@
 package hud;
-import collectable.weapon.WeaponType;
+import entity.weapon.WeaponType;
 import entity.Entity;
 import flixel.FlxG;
 import flixel.FlxSprite;
