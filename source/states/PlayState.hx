@@ -1,5 +1,5 @@
 package states;
-import entity.Entity;
+import del.Delegates;
 import entity.level.Level;
 import entity.Player;
 import flixel.FlxG;
@@ -15,6 +15,7 @@ class PlayState extends BaseState
 	var _level:Level;
 	var _player:Player;
 	var _hud:Hud;
+	var _delegates:Delegates;
 	
 	override public function create() {
 		super.create();
@@ -24,24 +25,18 @@ class PlayState extends BaseState
 	function init() {
 		add(_level = new Level());
 		add(_player = new Player());
-		add(_hud = new Hud());
+		add(_hud = new Hud(_player.core));
+		add(_delegates = new Delegates());
 	}
-	
 	override public function update() {
 		super.update();
 		collisionHandling();
-		
-		Registry.reward++;
-		
-		
+		chaseHandling();
 	}
 	function collisionHandling() {
-		FlxG.collide(_player.core, _level.bounds, playerHit);
+		FlxG.collide(_player.core, _level.bounds);
 	}
-	
-	function playerHit(player:FlxSprite, entity:FlxSprite) {
-		shake(0.002, 0.1);
-		_hud.changeHealth( -1);
+	function chaseHandling() {
+		_hud.changeDistance(_delegates.getChaseDistance());
 	}
-	
 }

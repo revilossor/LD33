@@ -11,9 +11,9 @@ class Wanted extends HudEntity
 {
 	var _text:FlxText;
 	
-	public function new() 
+	public function new(_player) 
 	{
-		super();
+		super(_player);
 		init();
 	}
 	function init() {
@@ -22,8 +22,9 @@ class Wanted extends HudEntity
 		_text.setFormat(null, 16, 0xff2c2c2c, 'center', FlxText.BORDER_NONE);
 	}
 	
-	override public function update() {
-		super.update();
+	public function change(by:Int) {
+		Registry.reward += by;
+		if (Registry.reward < 0) { Registry.reward = 0; }
 		_text.text = '$' + Registry.reward;
 	}
 	

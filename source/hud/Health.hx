@@ -9,9 +9,9 @@ import flixel.tweens.FlxTween;
  */
 class Health extends HudEntity
 {
-	public function new() 
+	public function new(_player) 
 	{
-		super();
+		super(_player);
 		init();
 	}
 	function init() {
@@ -19,7 +19,7 @@ class Health extends HudEntity
 		add(new FlxSprite(326, 564, 'assets/images/hud/health-heart.png'));
 		add(new FlxSprite(363, 564, 'assets/images/hud/health-heart.png'));
 	}
-	public function changeHealth(by:Int) {
+	public function change(by:Int) {
 		Registry.health += by;
 		if (Registry.health > 2) { Registry.health = 2; }
 		else if (Registry.health < 0) { Registry.health = 0; }

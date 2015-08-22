@@ -20,7 +20,6 @@ class Player extends FlxGroup
 	function init() {
 		add(core = getCore());
 		setPhysics();
-		Registry.player = this;
 	}
 	function getCore() {
 		core = new Entity(184, _start);
@@ -48,7 +47,6 @@ class Player extends FlxGroup
 	}
 	
 	override public function destroy() {
-		Registry.player = null;
 		core.destroy();
 		super.destroy();
 	}
