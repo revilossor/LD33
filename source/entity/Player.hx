@@ -56,6 +56,7 @@ class Player extends FlxGroup
 	
 	public function setWeapon(to:WeaponType) {
 		_shootable.setWeapon(to);
+		Registry.ammo = to.ammo;
 	}
 	
 	override public function destroy() {

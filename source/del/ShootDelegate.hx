@@ -17,13 +17,15 @@ class ShootDelegate extends FlxGroup
 		if (_counter-- < 0) { _counter = 0; }
 	}
 	public function canShoot() {
-		return _counter == 0 && _weapon != null && _weapon.hasAmmo();
+		return _counter == 0 && _weapon != null && Registry.ammo > 0;
 	}
 	
 	public function setWeapon(to:WeaponType) { _weapon = Type.createInstance(Weapon, [to]); }
 	
 	public function fire() {
 		_counter = _weapon.type.cooldown;
+		Registry.ammo--;
+		if (Registry.ammo < 0) { Registry.ammo = 0; }
 		trace('shoot ' + _weapon.type.launch + ' ' + _weapon.type.flight + ' ' + _weapon.type.payload );
 	}
 	

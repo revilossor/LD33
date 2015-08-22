@@ -30,7 +30,7 @@ class PlayState extends BaseState
 		add(_delegates = new Delegates());
 		
 		var weapon:WeaponType = {
-			ammo:3,
+			ammo:10,
 			maxAmmo:10,
 			cooldown:200,
 			payload:'normal',
@@ -58,9 +58,6 @@ class PlayState extends BaseState
 		};
 		changePlayerWeapon(four);
 	}
-	
-	
-	
 	
 	function chaseHandling() {
 		_hud.changeDistance(_delegates.getChaseDistance());
