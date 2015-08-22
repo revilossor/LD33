@@ -1,4 +1,5 @@
 package states;
+import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxState;
 
@@ -24,4 +25,8 @@ class BaseState extends FlxState
 			FlxG.switchState(Type.createInstance(nextState, []));
 		});
 	}
+	function shake(intensity:Float, duration:Float, ?onComplete:Void->Void) {
+		FlxG.camera.shake(intensity, duration, onComplete);
+	}
+	function doSmallShake(obj1:FlxBasic, obj2:FlxBasic) { shake(0.002, 0.1); }
 }
