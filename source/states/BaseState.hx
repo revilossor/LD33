@@ -1,4 +1,5 @@
 package states;
+import flixel.FlxG;
 import flixel.FlxState;
 
 /**
@@ -7,10 +8,20 @@ import flixel.FlxState;
  */
 class BaseState extends FlxState
 {
+	var _isFinishedFading:Bool = false;
+	
 	override public function create() {
 		super.create();
+		FlxG.camera.fade(Settings.STATE_FADE_COLOUR, Settings.STATE_FADE_DURATION, true, function() {
+			_isFinishedFading = true;
+		});
 	}
 	override public function update() {
-		super.update();
+		if (_isFinishedFading) { super.update(); }
+	}
+	function switchState(nextState:Class<FlxState>) {
+		FlxG.camera.fade(Settings.STATE_FADE_COLOUR, Settings.STATE_FADE_DURATION, false, function() {
+			FlxG.switchState(Type.createInstance(nextState, []));
+		});
 	}
 }
