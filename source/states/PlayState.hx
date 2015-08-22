@@ -1,7 +1,9 @@
 package states;
+import entity.Entity;
 import entity.level.Level;
 import entity.Player;
 import flixel.FlxG;
+import flixel.FlxSprite;
 import hud.Hud;
 
 /**
@@ -34,7 +36,12 @@ class PlayState extends BaseState
 		
 	}
 	function collisionHandling() {
-		FlxG.collide(_player.core, _level.bounds, doSmallShake);
+		FlxG.collide(_player.core, _level.bounds, playerHit);
+	}
+	
+	function playerHit(player:FlxSprite, entity:FlxSprite) {
+		shake(0.002, 0.1);
+		_hud.changeHealth( -1);
 	}
 	
 }

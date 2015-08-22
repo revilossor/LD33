@@ -13,4 +13,5 @@ class Registry
 	public static var player:Player;
 	
 	public static var reward:Int = 0;
+	public static var health:Int = 3;
 }

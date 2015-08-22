@@ -17,14 +17,14 @@ class Wanted extends HudEntity
 		init();
 	}
 	function init() {
-		add(new FlxSprite(0, 0, 'assets/images/hud/wanted.png'));
-		add(_text = new FlxText(9, 18, 120, '$ ' + Registry.reward, 18));
-		_text.setFormat(null, 16, 0xffD3AD32, 'center', FlxText.BORDER_NONE);
+		add(new FlxSprite(2, 2, 'assets/images/hud/wanted.png'));
+		add(_text = new FlxText(11, 10, 120, '$' + Registry.reward, 18));
+		_text.setFormat(null, 16, 0xff2c2c2c, 'center', FlxText.BORDER_NONE);
 	}
 	
 	override public function update() {
 		super.update();
-		_text.text = '$ ' + Registry.reward;
+		_text.text = '$' + Registry.reward;
 	}
 	
 }

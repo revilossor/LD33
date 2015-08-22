@@ -33,9 +33,9 @@ class Player extends FlxGroup
 	}
 	
 	override public function update() {
-		super.update();
 		keyHandling();
 		scrollHandling();
+		super.update();
 	}
 	function keyHandling() {
 		if (FlxG.keys.anyPressed(Keys.UP)) {	core.velocity.y -= _speed; }

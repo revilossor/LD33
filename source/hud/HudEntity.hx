@@ -14,11 +14,11 @@ class HudEntity extends FlxGroup
 		super.update();
 		if (FlxG.overlap(this, Registry.player.core)) {
 			for (member in members) {
-				FlxTween.tween(member, { alpha : 0 }, 0.2, { ease: FlxEase.circOut, type: FlxTween.ONESHOT});
+				FlxTween.tween(member, { alpha : 0 }, 0.2, { ease: FlxEase.circOut, type: FlxTween.ONESHOT });
 			}
 		} else {
 			for (member in members) {
-				FlxTween.tween(member, { alpha : 1 }, 0.2, { ease: FlxEase.circIn, type: FlxTween.ONESHOT});
+				FlxTween.tween(member, { alpha : 1 }, 0.2, { ease: FlxEase.circIn, type: FlxTween.ONESHOT });
 			}
 		}
 	}

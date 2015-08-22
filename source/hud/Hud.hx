@@ -8,6 +8,7 @@ import flixel.group.FlxGroup;
 class Hud extends FlxGroup
 {
 	var _wanted:Wanted;
+	var _health:Health;
 	
 	public function new() 
 	{
@@ -16,5 +17,10 @@ class Hud extends FlxGroup
 	}
 	function init() {
 		add(_wanted = new Wanted());
+		add(_health = new Health());
+	}
+	
+	public function changeHealth(by:Int) {
+		_health.changeHealth(by);
 	}
 }
