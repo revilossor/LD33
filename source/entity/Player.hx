@@ -1,4 +1,6 @@
 package entity;
+import collectable.weapon.WeaponType;
+import del.ShootDelegate;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
 
@@ -12,6 +14,8 @@ class Player extends FlxGroup
 	static inline var _start = 500;
 	public var core:Entity;
 	
+	var _shootable:ShootDelegate;
+	
 	public function new()
 	{
 		super();
@@ -19,6 +23,7 @@ class Player extends FlxGroup
 	}
 	function init() {
 		add(core = getCore());
+		add(_shootable = new ShootDelegate());
 		setPhysics();
 	}
 	function getCore() {
@@ -37,13 +42,20 @@ class Player extends FlxGroup
 		super.update();
 	}
 	function keyHandling() {
-		if (FlxG.keys.anyPressed(Keys.UP)) {	core.velocity.y -= _speed; }
-		if (FlxG.keys.anyPressed(Keys.DOWN)) {	core.velocity.y += _speed;	}
-		if (FlxG.keys.anyPressed(Keys.LEFT)) {	core.velocity.x -= _speed;	}
-		if (FlxG.keys.anyPressed(Keys.RIGHT)) {	core.velocity.x += _speed;	}
+		if(FlxG.keys.anyPressed(Keys.UP))		{ core.velocity.y -= _speed; }
+		if(FlxG.keys.anyPressed(Keys.DOWN))		{ core.velocity.y += _speed; }
+		if(FlxG.keys.anyPressed(Keys.LEFT))		{ core.velocity.x -= _speed; }
+		if(FlxG.keys.anyPressed(Keys.RIGHT))	{ core.velocity.x += _speed; }
+		if (FlxG.keys.anyPressed(Keys.ACTION) && _shootable.canShoot()) {
+			_shootable.fire();
+		}
 	}
 	function scrollHandling() {
 		Registry.SCROLL_DELTA = Math.floor(((core.y < _start) ? _start - core.y : 0) * Registry.SCROLL_COEFFICIENT);
+	}
+	
+	public function setWeapon(to:WeaponType) {
+		_shootable.setWeapon(to);
 	}
 	
 	override public function destroy() {

@@ -1,4 +1,5 @@
 package hud;
+import collectable.weapon.WeaponType;
 import entity.Entity;
 import flixel.group.FlxGroup;
 
@@ -13,6 +14,7 @@ class Hud extends FlxGroup
 	var _wanted:Wanted;
 	var _health:Health;
 	var _distance:Distance;
+	var _weapon:Weapon;
 	
 	public function new(player:Entity) 
 	{
@@ -24,9 +26,11 @@ class Hud extends FlxGroup
 		add(_wanted = new Wanted(_player));
 		add(_health = new Health(_player));
 		add(_distance = new Distance(_player));
+		add(_weapon = new Weapon(_player));
 	}
 	
-	public function changeHealth(by:Int)	{ _health.change(by);	}
-	public function changeReward(by:Int)	{ _wanted.change(by);	}
-	public function changeDistance(to:Int)	{ _distance.set(to);	}
+	public function changeHealth(by:UInt)		{ _health.change(by);	}
+	public function changeReward(by:UInt)		{ _wanted.change(by);	}
+	public function changeDistance(to:Int)		{ _distance.set(to);	}
+	public function changeWeapon(to:WeaponType)	{ _weapon.set(to);		}
 }
