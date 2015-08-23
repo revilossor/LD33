@@ -12,6 +12,8 @@ class Level extends FlxGroup
 	public var bounds:Bounds;
 	public var collectables:FlxGroup;
 	
+	var c:Int = 0;
+	
 	public function new() 
 	{
 		super();
@@ -21,9 +23,14 @@ class Level extends FlxGroup
 		add(bounds = new Bounds());
 		add(new LevelLayer('assets/images/level/tracks.png'));
 		add(collectables = new FlxGroup());
-		
-		spawnCollectable();
-		
+	}
+	
+	override public function update() {
+		super.update();
+		if (c++ > 300) {
+			if (Registry.ammo == 0) { spawnCollectable(); }
+			c = 0;
+		}
 	}
 	
 	public function spawnCollectable(?xp:Float = null, ?yp:Float = null) {
@@ -37,6 +44,5 @@ class Level extends FlxGroup
 		collectables.add(new Collectable(xp, yp));
 		return;
 	}
-	
 	
 }

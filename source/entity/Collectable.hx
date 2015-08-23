@@ -15,10 +15,12 @@ class Collectable extends Entity
 		init(xp, yp);
 	}
 	public function init(xp:Float, yp:Float) {
+		trace('init collectable at ' + xp + ', ' + yp);
 		x = xp;
 		y = yp;
 		alive = true;
 		exists = true;
+		_beenOnScreen = false;
 	}
 	
 	override public function update() {
@@ -27,7 +29,9 @@ class Collectable extends Entity
 		if (!_beenOnScreen) {
 			if (isOnScreen()) { _beenOnScreen = true; }
 		}else {
-			if (!isOnScreen()) { this.kill(); }
+			if (!isOnScreen()) {
+				this.kill();	
+			}
 		}
 	}
 	

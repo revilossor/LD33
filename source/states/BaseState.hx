@@ -20,6 +20,7 @@ class BaseState extends FlxState
 		if (_isFinishedFading) { super.update(); }
 	}
 	function switchState(nextState:Class<FlxState>) {
+		shake(0.05, 0.1);
 		FlxG.camera.fade(Settings.STATE_FADE_COLOUR, Settings.STATE_FADE_DURATION, false, function() {
 			FlxG.switchState(Type.createInstance(nextState, []));
 		});
