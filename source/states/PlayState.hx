@@ -31,7 +31,7 @@ class PlayState extends BaseState
 		add(_delegates = new Delegates());
 		
 		var weapon:WeaponType = {
-			ammo:10,
+			ammo:3,
 			maxAmmo:10,
 			payload:'slug',				// slug, dynamite
 			launch:'handgun',			// handgun, spread

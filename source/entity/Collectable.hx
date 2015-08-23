@@ -34,7 +34,7 @@ class Collectable extends Entity
 	public function getWeapon() {
 		var rate = getFireRate();
 		var newWeapon:WeaponType = {
-			ammo:Math.floor(Math.random() * 10),
+			ammo: 4 + Math.floor(Math.random() * 7),
 			maxAmmo:10,
 			payload:getPayload(),
 			launch:getLauncher(),
@@ -52,15 +52,15 @@ class Collectable extends Entity
 		return 'automatic';
 	}
 	function getPayload() {
-		var a = Math.round(Math.random());
-		if (a == 1) {
+		var a = Math.floor(Math.random() * 10);
+		if (a > 4) {
 			return 'dynamite';
 		}
 		return 'slug';
 	}
 	function getLauncher() {
-		var a = Math.round(Math.random());
-		if (a == 1) {
+		var a = Math.floor(Math.random() * 10);
+		if (a > 4) {
 			return 'handgun';
 		}
 		return 'launcher';

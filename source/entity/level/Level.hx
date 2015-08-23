@@ -27,15 +27,13 @@ class Level extends FlxGroup
 	}
 	
 	public function spawnCollectable(?xp:Float = null, ?yp:Float = null) {
-		if (xp == null) { xp = Math.floor(Math.random() * (FlxG.width - 32)); }
+		if (xp == null) { xp = 150 + Math.floor(Math.random() * (100 - 32)); }
 		if (yp == null) { yp = -32; }
 		var revived:Collectable = cast(collectables.getFirstDead());
 		if (revived != null) {
-			trace('reive collectable');
 			revived.init(xp, yp);
 			return;
 		}
-		trace('new collectable at ' + xp + ', ' + yp);
 		collectables.add(new Collectable(xp, yp));
 		return;
 	}
