@@ -1,6 +1,4 @@
 package entity.weapon;
-import flixel.FlxG;
-import flixel.FlxObject;
 import flixel.util.FlxPoint;
 
 /**	
@@ -10,12 +8,6 @@ import flixel.util.FlxPoint;
 class SubBullet extends Entity
 {
 	public var type:WeaponType;
-	
-	var _frequency:Float = 0.2;
-	var _amplitude:Float = 5;
-	var _counter:Int = 0;
-	var _sine:Float = 0;
-	var _trackSpeed:Float = 10000;
 	
 	public function new(xp:Float, yp:Float, graphic:Dynamic, vector:FlxPoint, type:WeaponType) 
 	{
@@ -27,8 +19,6 @@ class SubBullet extends Entity
 		this.exists = true;
 		x = xp;
 		y = yp;
-		_counter = 0;
-		_sine = 0;
 		loadGraphic(graphic);
 		velocity = vector;
 		this.type = type;
@@ -37,37 +27,13 @@ class SubBullet extends Entity
 	override public function update() {
 		super.update();
 		killIfOffscreen();
-		if (alive) { doCorrectBehaviour(); }
-		if (type.launch == 'mine') {
-			if (_counter == 10) { velocity.set(); }
-			y += Registry.SCROLL_DELTA; 
-		}
 	}
 	function killIfOffscreen() {
 		if (!this.isOnScreen()) {
 			kill();
 		}
 	}
-	function doCorrectBehaviour() {
-		_counter++;
-		if(_counter > 10 && type.flight == 'wobble') { doSineWobble(); }
-	}
-	function doSineWobble() {
-		switch(getDirection()) {
-			case Direction.Vertical : x += getSine();		// this maight fuck up collision detection
-			case Direction.Horizontal : y += getSine();
-			case Unimportant:
-		}
-	}
-	function getSine() {
-		return _amplitude * Math.sin(_frequency * _counter + 0.5);
-	}
-	function getDirection() {
-		if (type.launch == 'spread') { return Direction.Vertical; }
-		if (velocity.x != 0 && velocity.y == 0) { return Direction.Horizontal; }
-		else if(velocity.x == 0) { return Direction.Vertical; }
-		return Direction.Unimportant;
-	}
+	
 	function explode() {
 		this.kill();
 	}

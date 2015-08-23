@@ -1,7 +1,7 @@
 package entity;
+import del.ShootDelegate;
 import entity.weapon.Bullet;
 import entity.weapon.WeaponType;
-import del.ShootDelegate;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
 

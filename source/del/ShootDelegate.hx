@@ -26,7 +26,7 @@ class ShootDelegate extends FlxGroup
 		_counter = _weapon.type.cooldown;
 		Registry.ammo--;
 		if (Registry.ammo < 0) { Registry.ammo = 0; }
-		trace('shoot ' + _weapon.type.launch + ' ' + _weapon.type.flight + ' ' + _weapon.type.payload );
+		trace('shoot ' + _weapon.type.launch + ' ' + _weapon.type.payload );
 		return _weapon.type;
 	}
 	

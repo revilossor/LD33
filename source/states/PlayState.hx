@@ -1,8 +1,8 @@
 package states;
-import entity.weapon.WeaponType;
 import del.Delegates;
 import entity.level.Level;
 import entity.Player;
+import entity.weapon.WeaponType;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import hud.Hud;
@@ -34,8 +34,7 @@ class PlayState extends BaseState
 			maxAmmo:10,
 			cooldown:30,
 			payload:'slug',				// slug, dynamite
-			launch:'handgun',			// handgun, spread
-			flight:'straight'			// straight, wobbly
+			launch:'handgun'			// handgun, spread
 		};
 		changePlayerWeapon(weapon);
 	}
@@ -53,8 +52,7 @@ class PlayState extends BaseState
 			maxAmmo:10,
 			cooldown:200,
 			payload:'dynamite',
-			launch:'spread',
-			flight:'wobbly'
+			launch:'spread'
 		};
 		changePlayerWeapon(four);
 	}
