@@ -55,15 +55,16 @@ class Player extends FlxGroup
 		Registry.SCROLL_DELTA = Math.floor(((core.y < _start) ? _start - core.y : 0) * Registry.SCROLL_COEFFICIENT);
 	}
 	function playerShoot() {
-		bullets.add(getBullet(_shootable.getBullet(), core.getMidpoint().x, core.getMidpoint().y));
+		addBullet(_shootable.getBullet(), core.getMidpoint().x, core.getMidpoint().y);
 	}
-	function getBullet(type:WeaponType, xp:Float, yp:Float)  {
+	function addBullet(type:WeaponType, xp:Float, yp:Float)  {
 		var revived:Bullet = cast(bullets.getFirstDead());
 		if (revived != null) {
 			revived.init(type, xp, yp);
-			return revived;
+			return;
 		}
-		return new Bullet(type, xp, yp);
+		bullets.add(new Bullet(type, xp, yp));
+		return;
 	}
 	
 	public function setWeapon(to:WeaponType) {

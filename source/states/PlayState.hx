@@ -1,5 +1,6 @@
 package states;
 import del.Delegates;
+import entity.Collectable;
 import entity.level.Level;
 import entity.Player;
 import entity.weapon.WeaponType;
@@ -42,6 +43,10 @@ class PlayState extends BaseState
 		super.update();
 		collisionHandling();
 		chaseHandling();
+		
+		
+		
+		
 	}
 	function collisionHandling() {
 		FlxG.collide(_player.core, _level.bounds, doTest);		// TODO remember to remove meeeeeeeeeeeeeee

@@ -22,12 +22,12 @@ class Bullet extends FlxGroup
 		}
 	}
 	function doHandgun(type:WeaponType, xp:Float, yp:Float) {
-		add(new SubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(0, -500), type));
+		getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(0, -500), type);
 	}
 	function doSpread(type:WeaponType, xp:Float, yp:Float) {
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(0, -320), type));
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(-60, -300), type));
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(60, -300), type));
+		getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(0, -320), type);
+		getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(-60, -300), type);
+		getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(60, -300), type);
 	}
 	
 	override public function update() {
@@ -39,8 +39,9 @@ class Bullet extends FlxGroup
 		var revived:SubBullet = cast(getFirstDead());
 		if (revived != null) {
 			revived.init(xp, yp, graphic, vector, type);
-			return revived;
+			return;
 		}
-		return new SubBullet(xp, yp, graphic, vector, type);
+		add(new SubBullet(xp, yp, graphic, vector, type));
+		return;
 	}
 }
