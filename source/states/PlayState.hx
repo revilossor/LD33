@@ -2,6 +2,7 @@ package states;
 import del.Delegates;
 import entity.Collectable;
 import entity.level.Level;
+import entity.obstacle.ObstacleGroup;
 import entity.Player;
 import entity.weapon.WeaponType;
 import flixel.FlxG;

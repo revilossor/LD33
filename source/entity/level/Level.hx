@@ -1,4 +1,5 @@
 package entity.level;
+import del.ObstaclesDelegate;
 import entity.Collectable;
 import flixel.group.FlxGroup;
 
@@ -10,6 +11,7 @@ class Level extends FlxGroup
 {
 	public var bounds:Bounds;
 	public var collectables:FlxGroup;
+	public var obstacles:ObstaclesDelegate;
 	
 	var c:Int = 0;
 	
@@ -23,6 +25,7 @@ class Level extends FlxGroup
 		add(new Grounds());
 		add(new LevelLayer('assets/images/level/tracks.png'));
 		add(collectables = new FlxGroup());
+		add(obstacles = new ObstaclesDelegate());
 	}
 	
 	override public function update() {
