@@ -21,6 +21,7 @@ class Level extends FlxGroup
 	}
 	function init() {
 		add(bounds = new Bounds());
+		add(new Grounds());
 		add(new LevelLayer('assets/images/level/tracks.png'));
 		add(collectables = new FlxGroup());
 	}
