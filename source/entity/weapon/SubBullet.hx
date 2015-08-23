@@ -50,13 +50,7 @@ class SubBullet extends Entity
 	}
 	function doCorrectBehaviour() {
 		_counter++;
-		if(_counter > 10) {
-			switch type.flight {
-				case 'seeking':	// need to know bout baddies ?????
-				case 'tracking': doTracking();
-				case 'wobble':	doSineWobble();
-			}
-		}
+		if(_counter > 10 && type.flight == 'wobble') { doSineWobble(); }
 	}
 	function doSineWobble() {
 		switch(getDirection()) {
@@ -64,15 +58,6 @@ class SubBullet extends Entity
 			case Direction.Horizontal : y += getSine();
 			case Unimportant:
 		}
-	}
-	function doTracking() {
-		if (_counter > 30) { velocity.set(); }
-		if (FlxG.keys.anyPressed(Keys.UP))		{ velocity.y -= (_trackSpeed * FlxG.elapsed); }
-		if (FlxG.keys.anyPressed(Keys.DOWN))	{ velocity.y += (_trackSpeed * FlxG.elapsed); }
-		if (FlxG.keys.anyPressed(Keys.LEFT))	{ velocity.x -= (_trackSpeed * FlxG.elapsed); }
-		if (FlxG.keys.anyPressed(Keys.RIGHT))	{ velocity.x += (_trackSpeed * FlxG.elapsed); }
-		if (FlxG.keys.anyPressed(Keys.ACTION)) 	{ explode(); }
-		if (_counter > 300) { explode(); }
 	}
 	function getSine() {
 		return _amplitude * Math.sin(_frequency * _counter + 0.5);

@@ -19,8 +19,6 @@ class Bullet extends FlxGroup
 		switch type.launch {
 			case 'handgun': doHandgun(type, xp, yp); 
 			case 'spread': doSpread(type, xp, yp);
-			case 'fourway': doFourway(type, xp, yp); 
-			case 'mine': doMine(type, xp, yp);
 		}
 	}
 	function doHandgun(type:WeaponType, xp:Float, yp:Float) {
@@ -31,30 +29,18 @@ class Bullet extends FlxGroup
 		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(-60, -300), type));
 		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(60, -300), type));
 	}
-	function doFourway(type:WeaponType, xp:Float, yp:Float) {
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(0, -300), type));
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(0, 300), type));
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(-200, 0), type));
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.weak(200, 0), type));
-	}
-	function doMine(type:WeaponType, xp:Float, yp:Float) {
-		add(getSubBullet(xp, yp, 'assets/images/bullet/' + type.payload + '.png', FlxPoint.get(0, 200), type));
-	}
 	
 	override public function update() {
 		super.update();
-		if (getFirstAlive() == null) { trace('kill bullet');  this.kill(); }
+		if (getFirstAlive() == null) { this.kill(); }
 	}
 	
 	function getSubBullet(xp:Float, yp:Float, graphic:Dynamic, vector:FlxPoint, type:WeaponType) {
 		var revived:SubBullet = cast(getFirstDead());
-		trace('revived is ' + revived + ' length is ' + members.length);
 		if (revived != null) {
 			revived.init(xp, yp, graphic, vector, type);
-			trace('recycle subBullet');
 			return revived;
 		}
-		trace('new subBullet');
 		return new SubBullet(xp, yp, graphic, vector, type);
 	}
 }

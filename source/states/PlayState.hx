@@ -33,9 +33,9 @@ class PlayState extends BaseState
 			ammo:10,
 			maxAmmo:10,
 			cooldown:30,
-			payload:'slug',
-			launch:'fourway',
-			flight:'tracking'
+			payload:'slug',				// slug, dynamite
+			launch:'handgun',			// handgun, spread
+			flight:'straight'			// straight, wobbly
 		};
 		changePlayerWeapon(weapon);
 	}
@@ -52,9 +52,9 @@ class PlayState extends BaseState
 			ammo:3,
 			maxAmmo:10,
 			cooldown:200,
-			payload:'chloroform',
-			launch:'mine',
-			flight:'tracking'
+			payload:'dynamite',
+			launch:'spread',
+			flight:'wobbly'
 		};
 		changePlayerWeapon(four);
 	}
