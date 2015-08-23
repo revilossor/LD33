@@ -1,6 +1,6 @@
 package hud;
-import entity.weapon.WeaponType;
 import entity.Entity;
+import entity.weapon.WeaponType;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;

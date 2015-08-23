@@ -1,6 +1,5 @@
 package entity.level;
 import entity.Collectable;
-import flixel.FlxG;
 import flixel.group.FlxGroup;
 
 /**

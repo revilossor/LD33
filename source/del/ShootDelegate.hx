@@ -31,8 +31,8 @@ class ShootDelegate extends FlxGroup
 	}
 	function getCooldown() {
 		switch _weapon.type.rate {
-			case 'revolver': return 40;
-			case 'semi-automatic': return 20;
+			case 'revolver': return 80;
+			case 'semi-automatic': return 40;
 			case 'automatic': return 10;
 		}
 		return 40;

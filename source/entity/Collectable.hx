@@ -15,7 +15,6 @@ class Collectable extends Entity
 		init(xp, yp);
 	}
 	public function init(xp:Float, yp:Float) {
-		trace('init collectable at ' + xp + ', ' + yp);
 		x = xp;
 		y = yp;
 		alive = true;
