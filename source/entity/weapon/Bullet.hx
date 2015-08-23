@@ -18,7 +18,7 @@ class Bullet extends FlxGroup
 		this.exists = true;
 		switch type.launch {
 			case 'handgun': doHandgun(type, xp, yp); 
-			case 'spread': doSpread(type, xp, yp);
+			case 'launcher': doSpread(type, xp, yp);
 		}
 	}
 	function doHandgun(type:WeaponType, xp:Float, yp:Float) {

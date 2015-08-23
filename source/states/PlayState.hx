@@ -33,9 +33,9 @@ class PlayState extends BaseState
 		var weapon:WeaponType = {
 			ammo:10,
 			maxAmmo:10,
-			cooldown:30,
 			payload:'slug',				// slug, dynamite
-			launch:'handgun'			// handgun, spread
+			launch:'handgun',			// handgun, spread
+			rate:'revolver'
 		};
 		changePlayerWeapon(weapon);
 	}
@@ -43,23 +43,15 @@ class PlayState extends BaseState
 		super.update();
 		collisionHandling();
 		chaseHandling();
-		
-		
-		
-		
 	}
 	function collisionHandling() {
-		FlxG.collide(_player.core, _level.bounds, doTest);		// TODO remember to remove meeeeeeeeeeeeeee
+		FlxG.collide(_player.core, _level.bounds);
+		FlxG.overlap(_player.core, _level.collectables, playerOverCollectable);
 	}
-	function doTest(a:FlxSprite, b:FlxSprite) {
-		var four:WeaponType = {
-			ammo:3,
-			maxAmmo:10,
-			cooldown:200,
-			payload:'dynamite',
-			launch:'spread'
-		};
-		changePlayerWeapon(four);
+	function playerOverCollectable(player:FlxSprite, collectable:Collectable) {
+		shake(0.005, 0.1);
+		changePlayerWeapon(collectable.getWeapon());
+		collectable.explode();
 	}
 	
 	function chaseHandling() {

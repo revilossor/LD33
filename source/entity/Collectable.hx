@@ -1,4 +1,5 @@
 package entity;
+import entity.weapon.WeaponType;
 
 /**
  * ...
@@ -28,6 +29,45 @@ class Collectable extends Entity
 		}else {
 			if (!isOnScreen()) { this.kill(); }
 		}
+	}
+	
+	public function getWeapon() {
+		var rate = getFireRate();
+		var newWeapon:WeaponType = {
+			ammo:Math.floor(Math.random() * 10),
+			maxAmmo:10,
+			payload:getPayload(),
+			launch:getLauncher(),
+			rate:getFireRate()
+		};
+		return newWeapon;
+	}
+	function getFireRate() {
+		var a = Math.round(Math.random() * 2);
+		switch a {
+			case 0: return 'revolver';
+			case 1: return 'semi-automatic';
+			case 2: return 'automatic';	
+		}
+		return 'automatic';
+	}
+	function getPayload() {
+		var a = Math.round(Math.random());
+		if (a == 1) {
+			return 'dynamite';
+		}
+		return 'slug';
+	}
+	function getLauncher() {
+		var a = Math.round(Math.random());
+		if (a == 1) {
+			return 'handgun';
+		}
+		return 'launcher';
+	}
+	
+	public function explode() {
+		this.kill();
 	}
 	
 }

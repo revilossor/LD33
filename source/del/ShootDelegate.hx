@@ -23,11 +23,19 @@ class ShootDelegate extends FlxGroup
 	public function setWeapon(to:WeaponType) { _weapon = new Weapon(to); }
 	
 	public function getBullet() {
-		_counter = _weapon.type.cooldown;
+		_counter = getCooldown();
 		Registry.ammo--;
 		if (Registry.ammo < 0) { Registry.ammo = 0; }
 		trace('shoot ' + _weapon.type.launch + ' ' + _weapon.type.payload );
 		return _weapon.type;
+	}
+	function getCooldown() {
+		switch _weapon.type.rate {
+			case 'revolver': return 40;
+			case 'semi-automatic': return 20;
+			case 'automatic': return 10;
+		}
+		return 40;
 	}
 	
 }
